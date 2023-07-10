@@ -7,10 +7,9 @@ from typing import Dict, List, Tuple, Union
 
 import black
 import pendulum
-
-from mri_acronyms.models.pulse_sequence_category import PulseSequenceCategory
-from mri_acronyms.models.validate_models import check_for_duplicates, dedup_acronyms
-from mri_acronyms.util.logger import init_logger, relative_size
+from models.pulse_sequence_category import PulseSequenceCategory
+from models.validate_models import check_for_duplicates, dedup_acronyms
+from util.logger import init_logger, relative_size
 
 log = init_logger(caller=__file__)
 MODULE = Path(__file__).resolve().name

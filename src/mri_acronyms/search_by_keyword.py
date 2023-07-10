@@ -4,13 +4,12 @@ import string
 from typing import Any, Dict, List, Tuple, Union
 
 from english_words import get_english_words_set
+from lut.category_to_acronym_lut import CATEGORY_TO_ACRONYM_LUT
+from models.pulse_sequence_category import PulseSequenceCategory
+from models.pydantic_models import MriParameterModel, MriSequenceModel
 from rapidfuzz import fuzz
-
-from mri_acronyms.lut.category_to_acronym_lut import CATEGORY_TO_ACRONYM_LUT
-from mri_acronyms.models.pulse_sequence_category import PulseSequenceCategory
-from mri_acronyms.models.pydantic_models import MriParameterModel, MriSequenceModel
-from mri_acronyms.util.constants import VALID_SYMBOLS
-from mri_acronyms.util.logger import init_logger
+from util.constants import VALID_SYMBOLS
+from util.logger import init_logger
 
 ASCII_LETTERS = list(string.ascii_letters + string.digits + VALID_SYMBOLS)
 ENGLISH_WORDS = list(get_english_words_set(sources=["web2"], alpha=True, lower=False))
