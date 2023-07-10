@@ -1,0 +1,88 @@
+[tool.poetry]
+name = "mri-acronyms"
+version = "0.2.0"
+description = "DEMO: Magnetic Resonance Imaging (MRI) vendor acronyms"
+authors = ["Emile Averill <cloud.apps@averille.dev>"]
+readme = "README.md"
+license = "MIT"
+keywords = ["MRI", "medical", "imaging", "acronyms"]
+packages = [
+    { include = "mri_acronyms", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11.0"
+pandas = "*"
+pendulum = "*"
+rapidfuzz = "*"
+pydantic = "*"
+english-words = "*"
+
+[tool.poetry.group.dev.dependencies]
+black = "*"
+flake8 = "*"
+isort = "*"
+mypy = "*"
+pre-commit = "*"
+pydocstyle = "*"
+pylint = "*"
+pytest = "*"
+pytest-cov = "*"
+
+[tool.black]
+target-version = ["py311"]
+line-length = 120
+quiet = false
+
+[tool.isort]
+py_version = 311
+profile = "black"
+combine_as_imports = true
+use_parentheses = true
+src_paths = ["src", "tests"]
+skip = [".gitignore", ".dockerignore"]
+line_length = 120
+ensure_newline_before_comments = true
+
+[tool.mypy]
+python_version = "3.11"
+files = "*.py"
+mypy_path = "src"
+explicit_package_bases = false
+namespace_packages = true
+ignore_missing_imports = false
+no_implicit_optional = true
+pretty = true
+show_error_codes = true
+check_untyped_defs = true
+disable_error_code = [
+    "import",
+]
+
+[tool.pydocstyle]
+convention = "google"
+
+[tool.pylint.messages_control]
+max-line-length = 120
+extension-pkg-allow-list = ["pydantic"]
+disable = [
+    "consider-using-dict-items",
+    "consider-iterating-dictionary",
+    "logging-fstring-interpolation",
+    "invalid-name",
+]
+
+[tool.pytest.ini_options]
+pythonpath = [".", "src"]
+testpaths = [".", "tests"]
+
+[installer]
+no-binary = true
+
+[virtualenvs]
+in-project = true
+prefer-active-python = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
