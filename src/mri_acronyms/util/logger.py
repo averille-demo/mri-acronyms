@@ -5,18 +5,21 @@ from pathlib import Path
 from typing import Final
 
 PROJECT_ROOT: Final[Path] = Path(__file__).resolve().parent.parent.parent.parent
-REPO_NAME = PROJECT_ROOT.stem.replace("-", "_")
+REPO_NAME: Final[str] = PROJECT_ROOT.stem.replace(" ", "_").replace("-", "_")
 DEBUG: Final[bool] = True
 
 
 def get_readable_size(path: Path) -> str:
     """Convert bytes to readable string."""
-    size = float(path.stat().st_size)
+    if path.exists():
+        size = float(path.stat().st_size)
+    else:
+        size = 0.0
     for unit in ["", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei", "Zi"]:
         if abs(size) < 1024.0:
-            return f"{size:03.2f} {unit}B"
+            return f"({size:03.2f} {unit}B)"
         size /= 1024.0
-    return f"{size:03.2f} YiB"
+    return f"({size:03.2f} YiB)"
 
 
 def relative_size(
@@ -24,7 +27,7 @@ def relative_size(
 ) -> str:
     """Logging helper, truncate path relative to project level, add readable file size."""
     relative_path = path.as_posix().replace(PROJECT_ROOT.as_posix(), "")
-    return f"{relative_path} ({get_readable_size(path)})"
+    return f"{relative_path} {get_readable_size(path)}"
 
 
 def init_logger(
