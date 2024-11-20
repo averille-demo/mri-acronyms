@@ -4,6 +4,7 @@ https://cardiacmri.com/tech-guide/imaging-sequences/
 https://radiopaedia.org/articles/cardiac-mri?lang=us
 https://mrimaster.com/PLAN%20CARDIC.html
 """
+
 from typing import List
 
 from mri_acronyms.models.pydantic_models import MriSequenceModel

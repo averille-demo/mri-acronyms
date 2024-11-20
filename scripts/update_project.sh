@@ -1,13 +1,12 @@
 #!/bin/bash
-# updated: 2023-06-30
+# updated: 2024-10-01
 SCRIPT_NAME=$(basename "${BASH_SOURCE[0]}")
 ROOT_CWD=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 PROJECT_PATH="$(dirname "$ROOT_CWD")"
-cd "$PROJECT_PATH"
+cd "$PROJECT_PATH" || exit
 
 SCRIPT_BASENAME="poetry_$(basename "${BASH_SOURCE::-3}")"
 LOG_FILE="$PROJECT_PATH/logs/$SCRIPT_BASENAME.log"
-mkdir -p "$(dirname "$LOG_FILE")"
 
 PROJECT=$(sed -n 's/^ *name.*=.*"\([^"]*\)".*/\1/p' "$PROJECT_PATH/pyproject.toml")
 VERSION=$(sed -n 's/^ *version.*=.*"\([^"]*\)".*/\1/p' "$PROJECT_PATH/pyproject.toml")

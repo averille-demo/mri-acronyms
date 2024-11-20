@@ -2,14 +2,16 @@
 
 Remove duplicates and drop vendor specific mappings.
 """
+
 from pathlib import Path
 from typing import Dict, List, Tuple, Union
 
 import black
 import pendulum
-from models.pulse_sequence_category import PulseSequenceCategory
-from models.validate_models import check_for_duplicates, dedup_acronyms
-from util.logger import init_logger, relative_size
+
+from mri_acronyms.models.pulse_sequence_category import PulseSequenceCategory
+from mri_acronyms.models.validate_models import check_for_duplicates, dedup_acronyms
+from mri_acronyms.util.logger import init_logger, relative_size
 
 log = init_logger(caller=__file__)
 MODULE = Path(__file__).resolve().name
@@ -87,7 +89,7 @@ def format_entry_row(
         delimiters = ("(", ")")
     elif isinstance(data_row, list):
         delimiters = ("[", "]")
-    if isinstance(data_row, (list, tuple)):
+    if isinstance(data_row, (List, Tuple)):
         formatted_line = f'{indent}"{key}": {delimiters[0]}\n'
         for element in data_row:
             formatted_line += f'{indent}{indent}"{element}",\n'

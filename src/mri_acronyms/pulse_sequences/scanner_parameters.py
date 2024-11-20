@@ -1,4 +1,5 @@
 """Vendor dependent pulse sequence parameters/settings."""
+
 from typing import List
 
 from mri_acronyms.models.pydantic_models import MriParameterModel
@@ -257,6 +258,66 @@ MRI_PARAMETERS: List[MriParameterModel] = [
         hitachi=["k-RAPID"],
     ),
     MriParameterModel(
+        name="deep_learning_reconstruction_noise_reduction",
+        description="noise reduction image reconstruction - uses specific noise maps generated from raw data",
+        url="https://mrimaster.com/deep-resolve-mri/",  # type: ignore[arg-type]
+        siemens=["Deep Resolve Gain"],
+        ge=[],
+        philips=[],
+        canon=["Advanced intelligent Clear-IQ Engine", "AiCE"],
+        hitachi=[],
+    ),
+    MriParameterModel(
+        name="deep_learning_reconstruction_sharpness",
+        description="deep neural network based image reconstruction method designed to enhance image sharpness",
+        url="https://mrimaster.com/deep-resolve-mri/",  # type: ignore[arg-type]
+        siemens=["Deep Resolve Sharp"],
+        ge=["AIR Recon DL"],
+        philips=[],
+        canon=[],
+        hitachi=[],
+    ),
+    MriParameterModel(
+        name="deep_learning_reconstruction_scan_time",
+        description="deep learning image reconstruction decreases image acquisition time while maintaining high SNR",
+        url="https://mrimaster.com/deep-resolve-mri/",  # type: ignore[arg-type]
+        siemens=["Deep Resolve Boost"],
+        ge=[],
+        philips=["SmartSpeed"],
+        canon=[],
+        hitachi=[],
+    ),
+    MriParameterModel(
+        name="compressed_sensing_kspace_sampling",
+        description="methods for accelerated MR data acquisition based on semi-random, incomplete sampling of k-space",
+        url="https://mriquestions.com/compressed-sensing.html",  # type: ignore[arg-type]
+        siemens=["Compressed Sensing"],
+        ge=["HyperSense"],
+        philips=["Compressed SENSE"],
+        canon=["Compressed Speeder"],
+        hitachi=[],
+    ),
+    MriParameterModel(
+        name="simultaneous_multislice",
+        description="Simultaneous Multi-Slice (SMS) - concurrently acquire 2D slices with shorter scan time",
+        url="https://mriquestions.com/two-slices-at-once.html",  # type: ignore[arg-type]
+        siemens=["Simultaneous Multi-Slice", "Simultaneous Excitation"],
+        ge=["Phase Offset Multiplanar", "POMP"],
+        philips=["Multi-slice"],
+        canon=["QuadScan"],
+        hitachi=["Dual-slice"],
+    ),
+    MriParameterModel(
+        name="biomatrix_sensor",
+        description="Respiratory and cardiac sensors integrated directly into the MRI scanner table",
+        url="https://mrimaster.com/mri-biomatrix-sensor/",  # type: ignore[arg-type]
+        siemens=["BioMatrix Sensor"],
+        ge=[],
+        philips=[],
+        canon=[],
+        hitachi=[],
+    ),
+    MriParameterModel(
         name="off_center_shift_slice_group",
         description="shifting the center of a slice group from the center of magnetic field",
         url="https://mriquestions.com/slice-selective-excitation.html",  # type: ignore[arg-type]
@@ -265,16 +326,6 @@ MRI_PARAMETERS: List[MriParameterModel] = [
         philips=["Off-center FoV"],
         canon=["Phase & Frequency Shift"],
         hitachi=["Off-center FoV"],
-    ),
-    MriParameterModel(
-        name="simultaneous_excitation",
-        description="specialized multi-slice excitation technique",
-        url="https://mriquestions.com/two-slices-at-once.html",  # type: ignore[arg-type]
-        siemens=["Simultaneous Excitation"],
-        ge=["Phase Offset Multiplanar", "POMP"],
-        philips=["Multi-Slice"],
-        canon=["QuadScan"],
-        hitachi=["Dual Slice"],
     ),
     MriParameterModel(
         name="water_excitation",
@@ -288,11 +339,11 @@ MRI_PARAMETERS: List[MriParameterModel] = [
     ),
     MriParameterModel(
         name="metal_artifact_reduction",
-        description="reduce geometric distortions: signal voids (black areas) & signal pile-ups (bright areas)",
+        description="reduce geometric distortions: signal voids (black) & signal pile-ups (bright) from metal implants",
         url="https://mriquestions.com/metal-suppression.html",  # type: ignore[arg-type]
-        siemens=["WARP"],
+        siemens=["WARP", "SEMAC"],
         ge=["MAVRIC"],
-        philips=["O-MAR VAT"],
+        philips=["O-MAR"],
         canon=["VAT"],
         hitachi=["HiMAR"],
     ),
@@ -362,7 +413,7 @@ MRI_PARAMETERS: List[MriParameterModel] = [
         url="https://mriquestions.com/respiratory-comp.html",  # type: ignore[arg-type]
         siemens=["Respiratory Gated"],
         ge=["Respiratory Comp"],
-        philips=["Trigger;", "PEAR"],
+        philips=["Trigger", "PEAR"],
         canon=["Respiratory Gated"],
         hitachi=["MAR"],
     ),

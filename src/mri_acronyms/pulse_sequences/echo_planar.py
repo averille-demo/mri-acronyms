@@ -1,4 +1,5 @@
 """Echo Planar (EP) pulse sequences."""
+
 from typing import List
 
 from mri_acronyms.models.pydantic_models import MriSequenceModel
@@ -49,8 +50,7 @@ EPI_PULSE_SEQUENCES: List[MriSequenceModel] = [
         classification="echo_planar",
         acquisition_modes=["2d_slices"],
         description="uses anisotropic diffusion (> 6 directions) to estimate white matter organization of brain",
-        url="https://radiopaedia.org/articles/"
-        + "diffusion-tensor-imaging-and-fibre-tractography",  # type: ignore[arg-type]
+        url="https://radiopaedia.org/articles/" + "diffusion-tensor-imaging-and-fibre-tractography",  # type: ignore[arg-type]
         siemens=["DTI", "MDDW"],
         ge=["DTI"],
         philips=["DTI"],
@@ -76,8 +76,7 @@ EPI_PULSE_SEQUENCES: List[MriSequenceModel] = [
         classification="echo_planar",
         acquisition_modes=["2d_slices"],
         description="3D reconstruction technique of DTI acquisition",
-        url="https://radiopaedia.org/articles/"
-        + "diffusion-tensor-imaging-and-fibre-tractography",  # type: ignore[arg-type]
+        url="https://radiopaedia.org/articles/" + "diffusion-tensor-imaging-and-fibre-tractography",  # type: ignore[arg-type]
         siemens=["DTI Tractography", "Tractography"],
         ge=["FiberTrak", "fiber", "tracking"],
         philips=["FiberTrak", "Trak"],

@@ -43,6 +43,7 @@ class PulseSequenceCategory(Enum):
         return self.value
 
     @property
+    # pylint: disable=[too-many-return-statements]
     def acronyms(self) -> Sequence[Union[MriParameterModel, MriSequenceModel]]:
         """Mapping of category string to relevant key/value pairs."""
         match self:

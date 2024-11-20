@@ -1,4 +1,5 @@
 """Test keyword matching logic."""
+
 import random
 import string
 
@@ -25,8 +26,7 @@ def test_check_words_with_valid_symbols():
     symbols = list(VALID_SYMBOLS)
     for keyword in get_valid_words():
         # append random symbol to end of valid keyword
-        keyword = f"{keyword}{random.choice(symbols)}"
-        result = match_acronym(keyword=keyword)
+        result = match_acronym(keyword=f"{keyword}{random.choice(symbols)}")
         assert result
 
 
@@ -35,8 +35,7 @@ def test_check_words_with_invalid_symbols():
     symbols = list(set(string.punctuation + "\t" + "\n" + " ").difference(set(VALID_SYMBOLS)))
     for keyword in get_valid_words():
         # append random symbol to end of valid keyword
-        keyword = f"{keyword}{random.choice(symbols)}"
-        result = match_acronym(keyword=keyword)
+        result = match_acronym(keyword=f"{keyword}{random.choice(symbols)}")
         assert result
 
 

@@ -3,12 +3,17 @@
 https://docs.pydantic.dev/latest/migration/
 https://docs.pydantic.dev/2.0/usage/validators/
 """
+
 import re
 from typing import List, Optional
 
 from pydantic import BaseModel, ConfigDict, HttpUrl, field_validator
 
-from mri_acronyms.util.constants import VALID_ACQUISITION_MODES, VALID_IMAGE_WEIGHTINGS, VALID_SEQUENCE_CLASSIFICATIONS
+from mri_acronyms.util.constants import (
+    VALID_ACQUISITION_MODES,
+    VALID_IMAGE_WEIGHTINGS,
+    VALID_SEQUENCE_CLASSIFICATIONS,
+)
 
 
 # pylint: disable=[too-few-public-methods, no-self-argument]
@@ -19,7 +24,7 @@ class MriParameterModel(BaseModel):
     https://docs.pydantic.dev/latest/usage/model_config/#options
     """
 
-    model_config = ConfigDict(check_fields=True, populate_by_name=False, str_strip_whitespace=True)
+    model_config = ConfigDict(populate_by_name=False, str_strip_whitespace=True)
     name: str
     description: str
     url: HttpUrl

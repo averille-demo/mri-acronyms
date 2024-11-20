@@ -1,4 +1,5 @@
 """Constant values."""
+
 from typing import Dict, Final, List
 
 SEP: Final[str] = "; "

@@ -2,6 +2,7 @@
 
 https://mriquestions.com/commercial-acronyms.html
 """
+
 from typing import List
 
 from mri_acronyms.models.pydantic_models import MriSequenceModel
@@ -117,8 +118,7 @@ GRE_PULSE_SEQUENCES: List[MriSequenceModel] = [
         classification="gradient_echo",
         acquisition_modes=["2d_slices"],
         description="small flip angle with very short TR and optimized k-space filling",
-        url="https://www.imaios.com/en/e-mri/sequences/"
-        + "ultrafast-spoiled-gradient-echo-sequences",  # type: ignore[arg-type]
+        url="https://www.imaios.com/en/e-mri/sequences/" + "ultrafast-spoiled-gradient-echo-sequences",  # type: ignore[arg-type]
         siemens=["TurboFLASH"],
         ge=["Fast GRE", "Fast SPGR"],
         philips=["TFE"],

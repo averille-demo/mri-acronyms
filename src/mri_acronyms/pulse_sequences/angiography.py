@@ -3,6 +3,7 @@
 CE-MRI: IV Contrast Enchained MRI
 Non-Contrast: no IV contrast is injected to produce bright blood signal (In-flow effect)
 """
+
 from typing import List
 
 from mri_acronyms.models.pydantic_models import MriSequenceModel

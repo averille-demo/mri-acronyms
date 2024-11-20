@@ -8,6 +8,7 @@ https://www.imaios.com/en/e-mri/sequences/ultrafast-spoiled-gradient-echo-sequen
 
 Regarding image contrast: STIR and FLAIR can be either T1 or T2 weighted depending on parameters: TI, TR, TE, etc.
 """
+
 from typing import List
 
 from mri_acronyms.models.pydantic_models import MriSequenceModel

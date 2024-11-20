@@ -1,4 +1,5 @@
 """Spin echo (SE) pulse sequences."""
+
 from typing import List
 
 from mri_acronyms.models.pydantic_models import MriSequenceModel

@@ -1,12 +1,14 @@
 """Convert lookup tables to '.csv' report."""
+
 from pathlib import Path
 from typing import Any, Dict, List
 
 import pandas as pd
-from models.pulse_sequence_category import PulseSequenceCategory
-from models.validate_models import check_for_duplicates
-from util.constants import HEADERS, SEP
-from util.logger import PROJECT_ROOT, init_logger, relative_size
+
+from mri_acronyms.models.pulse_sequence_category import PulseSequenceCategory
+from mri_acronyms.models.validate_models import check_for_duplicates
+from mri_acronyms.util.constants import HEADERS, SEP
+from mri_acronyms.util.logger import PROJECT_ROOT, init_logger, relative_size
 
 log = init_logger(caller=__file__)
 

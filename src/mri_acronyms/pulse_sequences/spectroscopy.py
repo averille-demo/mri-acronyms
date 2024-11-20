@@ -4,6 +4,7 @@ Analyze chemical composition of tissues in very small number of much larger voxe
 https://mriquestions.com/mri-vs-mrs.html
 https://www.imaios.com/en/e-mri/magnetic-resonance-spectroscopy/single-voxel-spectroscopy
 """
+
 from typing import List
 
 from mri_acronyms.models.pydantic_models import MriSequenceModel

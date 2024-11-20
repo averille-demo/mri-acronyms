@@ -1,6 +1,8 @@
 """Logging module."""
+
 import logging
 import sys
+from logging.handlers import TimedRotatingFileHandler
 from pathlib import Path
 from typing import Final
 
@@ -63,15 +65,20 @@ def init_logger(
         validate=True,
     )
 
+    def namer(name):
+        """Move .log file extension to end after YYYY-MM-DD."""
+        return name.replace(".log", "") + ".log"
+
     # save messages to log file
-    file_handler = logging.FileHandler(filename=log_file)
-    file_handler.setLevel(level=logging.DEBUG)
-    file_handler.setFormatter(fmt=log_format)
-    logger.addHandler(hdlr=file_handler)
+    fh = TimedRotatingFileHandler(filename=log_file, when="midnight", backupCount=5, encoding="utf8")
+    fh.setLevel(level=logging.DEBUG)
+    fh.setFormatter(fmt=log_format)
+    fh.namer = namer
+    logger.addHandler(hdlr=fh)
 
     # display messages to console
-    console_handler = logging.StreamHandler(sys.stdout)
-    console_handler.setLevel(level=logging.INFO)
-    console_handler.setFormatter(fmt=log_format)
-    logger.addHandler(hdlr=console_handler)
+    sh = logging.StreamHandler(sys.stdout)
+    sh.setLevel(level=logging.INFO)
+    sh.setFormatter(fmt=log_format)
+    logger.addHandler(hdlr=sh)
     return logger
